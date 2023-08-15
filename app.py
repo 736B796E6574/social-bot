@@ -11,7 +11,7 @@ PAGE_ACCESS_TOKEN = "YOUR_PAGE_ACCESS_TOKEN"
 @app.route('/webhook', methods=['GET', 'POST'])
 def webhook():
     if request.method == 'GET':
-        print("It's alive!")
+        print(request)
         # Verification request from Facebook
         mode = request.args.get('hub.mode')
         token = request.args.get('hub.verify_token')
@@ -24,7 +24,7 @@ def webhook():
 
     elif request.method == 'POST':
         # Actual webhook event
-        print("It's alive!")
+        print(request)
         data = request.json
         if data['object'] == 'page':
             for entry in data['entry']:
