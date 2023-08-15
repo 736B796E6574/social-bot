@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
 import hashlib
 import hmac
+import os
 
 app = Flask(__name__)
 
-VERIFY_TOKEN = "YOUR_SECRET_VERIFY_TOKEN"  # You choose this and set it in the Facebook dashboard
+VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')  # You choose this and set it in the Facebook dashboard
 PAGE_ACCESS_TOKEN = "YOUR_PAGE_ACCESS_TOKEN"
 
 @app.route('/webhook', methods=['GET', 'POST'])
