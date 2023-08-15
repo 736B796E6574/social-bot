@@ -24,8 +24,9 @@ def webhook():
 
     elif request.method == 'POST':
         # Actual webhook event
-        print(request)
+        
         data = request.json
+        print(data)
         if data['object'] == 'page':
             for entry in data['entry']:
                 for event in entry['messaging']:
